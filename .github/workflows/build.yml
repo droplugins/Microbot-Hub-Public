@@ -7,6 +7,8 @@ on:
 
 jobs:
   build-and-publish:
+    # Forks and private backups must not publish upstream releases.
+    if: github.repository == 'chsami/Microbot-Hub'
     runs-on: ubuntu-latest
     permissions:
       contents: write  # required for release creation and gh-pages push
