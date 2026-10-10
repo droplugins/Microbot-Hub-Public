@@ -93,7 +93,7 @@ public class PVirewatchKillerPlugin extends Plugin {
     private ItemManager itemManager;
 
     // Total value of picked up items
-    private long totalItemValue = 0;
+    private int totalItemValue = 0;
 
     // Previous inventory state
     private Map<Integer, Integer> previousInventory = new HashMap<>();
@@ -187,7 +187,7 @@ public class PVirewatchKillerPlugin extends Plugin {
                 if (currentQuantity > previousQuantity)
                 {
                     int newQuantity = currentQuantity - previousQuantity;
-                    long itemValue = itemManager.getItemPrice(itemId);
+                    int itemValue = (int) itemManager.getItemPrice(itemId);
                     totalItemValue += itemValue * newQuantity;
                 }
             }
@@ -212,7 +212,7 @@ public class PVirewatchKillerPlugin extends Plugin {
         return formatNumber(totalItemValue);
     }
 
-    public static String formatNumber(long value)
+    public static String formatNumber(int value)
     {
         if (value >= 1_000_000)
         {

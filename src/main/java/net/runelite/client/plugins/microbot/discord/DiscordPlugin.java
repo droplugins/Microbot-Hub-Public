@@ -309,9 +309,9 @@ public class DiscordPlugin extends Plugin {
             }
 
             if (isNewItem || currentItem.getQuantity() > oldQuantity) {
-                long gePrice = itemManager.getItemPrice(currentItem.getId());
+                int gePrice = (int) itemManager.getItemPrice(currentItem.getId());
                 int quantityIncrease = currentItem.getQuantity() - oldQuantity;
-                long totalValue = gePrice * quantityIncrease;
+                int totalValue = gePrice * quantityIncrease;
 
                 if (totalValue >= threshold) {
                     String itemName = itemManager.getItemComposition(currentItem.getId()).getName();
@@ -407,4 +407,4 @@ public class DiscordPlugin extends Plugin {
             }
         }
     }
-}
+} 

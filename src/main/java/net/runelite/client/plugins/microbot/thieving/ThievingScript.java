@@ -269,10 +269,10 @@ ThievingNpcStrategy getActiveStrategy() {
                 .filter(id -> !SELF_DROPPED_ITEM_IDS.contains(id))
                 .distinct()
                 .map(id -> {
-                    final long price = Microbot.getItemManager().getItemPrice(id);
+                    final int price = (int) Microbot.getItemManager().getItemPrice(id);
                     return Map.entry(id, price);
                 }).filter(entry -> entry.getValue() >= minPrice)
-                .max(Comparator.comparingLong(Map.Entry::getValue))
+                .max(Comparator.comparingInt(Map.Entry::getValue))
                 .map(Map.Entry::getKey).orElse(-1)).orElse(-1);
     }
 
